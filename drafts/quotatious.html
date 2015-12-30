@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+
+	<title>Quotatious</title>
+	
+</head>
+
+<body>
+
+<p id="quote"></p>
+<button onclick="generateQuote()">Show another</button>
+
+<script>
+var quotes = [
+	{
+		"movie": "Gone with the Wind",
+		"quote": "Frankly, my dear, I don't give a damn"
+	},
+	{
+		"movie": "The Godfather",
+		"quote": "I'm going to make him an offer he can't refuse"
+	},
+	{
+		"movie": "Star Wars",
+		"quote": "May the Force be with you"		
+	},
+	{
+		"movie": "Taxi Driver",
+		"quote": "You talkin' to me?"		
+	},
+		{
+		"movie": "The Wizard of Oz",
+		"quote": "There's no place like home"		
+	}
+];
+
+function generateQuote() {
+	var q = Math.floor((Math.random() * 5));
+	console.log(q);
+	document.getElementById("quote").innerHTML = quotes[q].quote + "<br/>" + "<br/>" + quotes[q].movie;
+}
+
+</script>
+
+</body>
+</html>
