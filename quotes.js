@@ -65,36 +65,31 @@ var quotes = [
   }
 ];
 
-//Size of the JSON object
 var sizeQuotes = quotes.length;
-console.log(sizeQuotes);
+var uniqueRandoms = [];
 
-//var uniqueRandoms = [];
-//var sizeQuotes = quotes.length;
+if (!uniqueRandoms.length) {
+  for (var i = 0; i < sizeQuotes; i++) {
+    uniqueRandoms.push(i);
+  }
+}
 
 function generateQuote() {
-  //Generate random numbers only used once
-  var uniqueRandoms = [];
-  var sizeQuotes = quotes.length;
   function makeUniqueRandom() {
-    if (!uniqueRandoms.length) {
-      for (var i = 0; i < sizeQuotes; i++) {
-        uniqueRandoms.push(i);
-      }
-    }
     var index = Math.floor(Math.random() * uniqueRandoms.length);
-    var val = uniqueRandoms[index];
-    console.log(val);
-    uniqueRandoms.splice(index, 1);
+    var qLeft = uniqueRandoms.splice(index, 1);
+    console.log(qLeft[0]);
 
-    //return val;
-    document.getElementById("quote").innerHTML = '"' + quotes[val].quote + '"';
-    document.getElementById("movie").innerHTML = quotes[val].movie;
-
+    if (qLeft[0] != null) {
+      document.getElementById("quote").innerHTML = '"' + quotes[qLeft].quote + '"';
+      document.getElementById("movie").innerHTML = quotes[qLeft].movie;
+    } else {
+      document.getElementById("quote").innerHTML = 'No more quotes to display';
+      document.getElementById("movie").innerHTML = '... but you can reload the page';
+    }
   }
-  var q = Math.floor((Math.random() * sizeQuotes));
-  console.log(q);
   makeUniqueRandom();
 }
 
 window.onload = generateQuote();
+
